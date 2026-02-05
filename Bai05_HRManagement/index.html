@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Management</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #222;
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .left {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .navbar .search-box input {
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .navbar .search-box button {
+      padding: 6px 10px;
+      border: none;
+      background: #444;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* MAIN */
+    .container {
+      width: 85%;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h3 {
+      margin: 0;
+    }
+
+    .add-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f2f2f2;
+    }
+
+    /* ACTION BUTTONS */
+    .btn-edit {
+      background: #ffc107;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      width: 500px;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h4 {
+      margin: 0;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      padding: 7px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+
+    .modal-footer {
+      text-align: right;
+      padding: 15px;
+      border-top: 1px solid #ddd;
+    }
+
+    .save-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background: #aaa;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <h2>HR Management</h2>
+      <a href="#">Home</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </div>
+
+  <!-- TABLE SECTION -->
+  <div class="container">
+    <div class="header">
+      <h3>Employee</h3>
+      <button class="add-btn" onclick="openModal()">+ Add</button>
+    </div>
+
+    <table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Position</th>
+    <th>Action</th>
+  </tr>
+
+  <tr>
+    <td>1</td>
+    <td>Fatima Beatriz</td>
+    <td>FatimaBeatriz@gmail.com</td>
+    <td>0985674321</td>
+    <td>Staff</td>
+    <td>
+      <button class="btn-edit">Edit</button>
+      <button class="btn-delete">Delete</button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>2</td>
+    <td>Gabriel Hanna</td>
+    <td>GabrielHanna@gmail.com</td>
+    <td>0353674231</td>
+    <td>Staff</td>
+    <td>
+      <button class="btn-edit">Edit</button>
+      <button class="btn-delete">Delete</button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td>Charles Diya</td>
+    <td>CharlesDiya@gmail.com</td>
+    <td>0347658833</td>
+    <td>Staff</td>
+    <td>
+      <button class="btn-edit">Edit</button>
+      <button class="btn-delete">Delete</button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>4</td>
+    <td>Frank Lamdo</td>
+    <td>FrankLamdo@gmail.com</td>
+    <td>0975444768</td>
+    <td>Manager</td>
+    <td>
+      <button class="btn-edit">Edit</button>
+      <button class="btn-delete">Delete</button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>5</td>
+    <td>Louis Tom</td>
+    <td>LouisTom@gmail.com</td>
+    <td>0789568223</td>
+    <td>Staff</td>
+    <td>
+      <button class="btn-edit">Edit</button>
+      <button class="btn-delete">Delete</button>
+    </td>
+  </tr>
+</table>
+
+
+  <!-- MODAL FORM -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4>New Employee</h4>
+        <span class="close-btn" onclick="closeModal()">✖</span>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text">
+          </div>
+
+          <div class="form-group">
+            <label>Position</label>
+            <select>
+              <option>- Select Position -</option>
+              <option>Staff</option>
+              <option>Manager</option>
+              <option>CEO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Sex</label>
+            <div class="radio-group">
+              <label><input type="radio" name="sex"> Male</label>
+              <label><input type="radio" name="sex"> Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="save-btn">Save</button>
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      </div>
+
+    </div>
+    
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function openModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
