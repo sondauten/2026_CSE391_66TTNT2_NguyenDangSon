@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 03 - HTML Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+<table>
+    <!-- Hàng tiêu đề cấp 1 -->
+    <tr>
+        <th colspan="2" rowspan="2">Student</th>
+        <th colspan="4">Exam</th>
+        <th colspan="4">2nd Exam</th>
+        <th colspan="2">Final Grade</th>
+    </tr>
+
+    <!-- Hàng tiêu đề cấp 2 -->
+    <tr>
+        <th>Q1</th>
+        <th>Q2</th>
+        <th>Q3</th>
+        <th rowspan="2">Grade</th>
+
+        <th>Q1</th>
+        <th>Q2</th>
+        <th>Q3</th>
+        <th rowspan="2">Grade</th>
+
+        <th rowspan="2">NR</th>
+        <th rowspan="2">R</th>
+    </tr>
+
+    <!-- Hàng tiêu đề cấp 3 -->
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+
+        <td>8</td>
+        <td>7</td>
+        <td>5</td>
+
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+    </tr>
+
+    <!-- Dữ liệu -->
+    <tr>
+        <td>80549061</td>
+        <td>John</td>
+
+        <td>70%</td>
+        <td>100%</td>
+        <td>100%</td>
+        <td>17.6</td>
+
+        <td colspan="3"></td>
+        <td></td>
+
+        <td>17.6</td>
+        <td>18</td>
+    </tr>
+
+    <tr>
+        <td>80549062</td>
+        <td>Mary</td>
+
+        <td>10%</td>
+        <td>50%</td>
+        <td>50%</td>
+        <td>6.8</td>
+
+        <td>100%</td>
+        <td>100%</td>
+        <td>50%</td>
+        <td>16.5</td>
+
+        <td>16.5</td>
+        <td>17</td>
+    </tr>
+
+    <tr>
+        <td>80549063</td>
+        <td>Claire</td>
+
+        <td colspan="4"></td>
+
+        <td>50%</td>
+        <td>50%</td>
+        <td>50%</td>
+        <td>10.0</td>
+
+        <td>10.0</td>
+        <td>10</td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Form</title>
+<link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 620px;
+      margin: auto;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+    }
+
+    /* Section title */
+    h3 {
+      font-size: 13px;
+      font-weight: bold;
+      margin: 15px 0 8px;
+      border-bottom: 1px solid #999;
+      padding-bottom: 3px;
+    }
+
+    /* Form rows */
+    .row {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+
+    .row label {
+      width: 140px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 280px;
+      height: 18px;
+      font-size: 12px;
+      border: 1px solid #999;
+      padding: 2px;
+    }
+
+    /* Small input */
+    .small {
+      width: 150px;
+    }
+
+    /* Gender radio vertical */
+    .gender-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-weight: normal;
+    }
+
+    /* Notes toolbar fake */
+    .toolbar {
+      width: 420px;
+      border: 1px solid #aaa;
+      border-bottom: none;
+      background: #eee;
+      padding: 3px;
+      font-size: 12px;
+    }
+
+    .toolbar span {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 420px;
+      height: 120px;
+      border: 1px solid #aaa;
+      font-size: 12px;
+      padding: 5px;
+      resize: none;
+    }
+
+    /* Checkbox group */
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-weight: normal;
+    }
+
+    /* Captcha style */
+    .captcha {
+      font-family: "Courier New", monospace;
+      font-size: 22px;
+      letter-spacing: 4px;
+      border: 1px dashed #999;
+      padding: 4px 15px;
+      display: inline-block;
+      margin-right: 15px;
+      background: #fafafa;
+    }
+
+    /* Buttons */
+    .buttons {
+      text-align: right;
+      margin-top: 15px;
+    }
+
+    button {
+      font-size: 12px;
+      padding: 4px 10px;
+      border: 1px solid #444;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    .required {
+      font-size: 11px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- BASIC INFO -->
+  <h3>Basic Info</h3>
+
+  <div class="row">
+    <label>Employee ID</label>
+    <input type="text" class="small" value="9">
+  </div>
+
+  <div class="row">
+    <label>Last Name</label>
+    <input type="text" value="Dodsworth">
+  </div>
+
+  <div class="row">
+    <label>First Name</label>
+    <input type="text" value="Anne">
+  </div>
+
+  <div class="row">
+    <label>Gender</label>
+    <div class="gender-box">
+      <label><input type="radio" name="g"> Male</label>
+      <label><input type="radio" name="g" checked> Female</label>
+      <label><input type="radio" name="g"> XXX</label>
+      <label><input type="radio" name="g"> ZZZ</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>Title</label>
+    <input type="text" value="Sales Representative">
+  </div>
+
+  <div class="row">
+    <label>Suffix</label>
+    <input type="text" class="small" value="Ms.">
+  </div>
+
+  <div class="row">
+    <label>BirthDate</label>
+    <input type="text" value="1969-07-02 00:00:00">
+  </div>
+
+  <div class="row">
+    <label>HireDate</label>
+    <input type="text" value="1994-11-15 00:00:00">
+  </div>
+
+  <div class="row">
+    <label>SSN (# if applicable)</label>
+    <input type="text">
+  </div>
+
+  <div class="row">
+    <label>Reports To</label>
+    <select class="small">
+      <option>Buchanan</option>
+    </select>
+  </div>
+
+  <!-- CONTACT INFO -->
+  <h3>Contact Info</h3>
+
+  <div class="row">
+    <label>Email</label>
+    <input type="email" placeholder="name@example.com">
+  </div>
+
+  <div class="row">
+    <label>Address</label>
+    <input type="text" value="7 Houndstooth Rd.">
+  </div>
+
+  <div class="row">
+    <label>City</label>
+    <input type="text" value="London">
+  </div>
+
+  <div class="row">
+    <label>Region</label>
+    <input type="text">
+  </div>
+
+  <div class="row">
+    <label>Postal Code</label>
+    <input type="text" class="small" value="WG2 7LT">
+  </div>
+
+  <div class="row">
+    <label>Country</label>
+    <select>
+      <option>Russian Federation</option>
+      
+    </select>
+  </div>
+
+  <div class="row">
+    <label>US Home Phone</label>
+    <input type="text" value="(234)234-2342">
+  </div>
+
+  <div class="row">
+    <label>Photo</label>
+    <input type="text" class="small" value="EmpID9.bmp">
+  </div>
+
+ <!-- OPTIONAL INFO -->
+<h3>Optional Info</h3>
+
+<div class="row">
+  <label>Notes</label>
+  <div>
+    <!-- Toolbar giống Word -->
+    <div class="toolbar">
+      <span><b>B</b></span>
+      <span><i>I</i></span>
+      <span><u>U</u></span>
+
+      <span>|</span>
+
+      <span>≡</span>
+      <span>≣</span>
+      <span>≢</span>
+
+      <span>|</span>
+
+      
+      
+
+      <span>|</span>
+
+      <span>🔗</span>
+      <span>↩</span>
+      <span>↪</span>
+
+      <span>|</span>
+
+      <span style="color:red;">✖</span>
+    </div>
+
+    <!-- Textarea -->
+    <textarea>
+Anne has a BA degree in English from St. Lawrence College.
+She is fluent in French and German.ZZZ
+    </textarea>
+  </div>
+</div>
+
+<div class="row">
+  <label>Preferred Shift</label>
+  <div class="check-group">
+    <label><input type="checkbox"> Regular</label>
+    <label><input type="checkbox" checked> Gravy Yard</label>
+  </div>
+</div>
+
+<div class="row">
+  <label>Active?</label>
+  <input type="checkbox" checked>
+</div>
+
+<!-- CAPTCHA -->
+<div class="row">
+  <label>Are you human?</label>
+  <div>
+    <span class="captcha">TIDAWO</span>
+    <button type="button">Click to change</button>
+
+    <br><br>
+
+    <!-- Ô nhập captcha -->
+    <input type="text" style="width:250px;">
+  </div>
+</div>
+
+  <!-- BUTTONS -->
+  <div class="buttons">
+    <button>Submit</button>
+    <button>Cancel</button>
+  </div>
+
+  <p class="required">* required</p>
+
+</div>
+
+</body>
+</html>
