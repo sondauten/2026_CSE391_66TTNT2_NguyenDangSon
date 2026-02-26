@@ -1,0 +1,39 @@
+.box1 {
+    display: flex;
+    gap: 12px;
+    
+}
+.pen {   
+
+  flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #999999;
+    background: #fff;
+
+}
+.box2 {
+ 
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #999999;
+    background: #fff;
+    
+}
+.box3 {
+   
+    height: 200px;
+    padding: 12px;
+    margin: 12px 0; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #999999;
+    background: #fff;
+}  
+.bottom {
+        display: flex;
+        justify-content: space-between;
+}
