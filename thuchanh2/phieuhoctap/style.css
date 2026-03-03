@@ -1,0 +1,268 @@
+/* TODO 1: Dùng universal selector để reset margin và padding về 0 cho toàn trang */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* TODO 2: Dùng type selector cho body */
+/* Yêu cầu: font-family: Arial; background-color: #f5f5f5; */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* TODO 3: Dùng ID selector cho #main-header */
+/* Yêu cầu: background-color: #333; color: white; text-align: center; padding: 20px; */
+#main-header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* TODO 4: Dùng class selector cho .nav-link */
+/* Yêu cầu: color: #333; text-decoration: none; padding: 10px 15px; */
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+/* TODO 5: Dùng group selector cho h1, h2, h3 */
+/* Yêu cầu: font-family: 'Georgia', serif; */
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
+}
+
+/* TODO 6: Dùng descendant selector cho nav a */
+/* Yêu cầu: display: inline-block; margin: 0 10px; */
+nav a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/* TODO 7: Dùng pseudo-class selector cho a:hover */
+/* Yêu cầu: color: #ff6600; background-color: #eee; */
+a:hover {
+    color: #ff6600;
+    background-color: #eee;
+}
+/* Bước 1: Reset box-sizing cho toàn trang */
+* {
+    box-sizing: border-box;
+}
+
+/* Bước 2: Style cho .posts container */
+.posts {
+    /* TODO: Căn giữa, margin trên dưới, max-width */
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Bước 3: Style cho .card */
+.card {
+    
+    width: 30%;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    background: white;
+    border-radius: 8px;
+    vertical-align: top;
+}
+
+/* Bước 4: Style cho .btn */
+.btn {
+   
+    display: inline-block;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    /* TODO: background: #0056b3 */
+    background: #0056b3;
+}
+/* Cải tiến nav bằng Flexbox */
+nav {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+}
+
+/* Cải tiến .posts bằng Flexbox */
+.posts {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.card {
+    /* TODO:
+       - flex: 0 0 calc(33.33% - 20px)
+       - (hoặc flex: 1 1 300px cho responsive tự động)
+    */
+    flex: 1 1 300px;
+    width: auto;
+    display: block;
+    margin: 0;
+}
+
+/* Responsive: Khi màn hình < 768px, card chiếm full width */
+@media (max-width: 768px) {
+    .posts {
+      
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .card {
+       
+        flex: 1 1 100%;
+    }
+}
+.gallery {
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.item {
+   
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+
+/* Responsive: Tự động giảm cột khi màn hình nhỏ */
+.gallery {
+    /* TODO: Dùng auto-fit/auto-fill */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+/* ========== BÀI TẬP 4: HEADER STICKY + RESPONSIVE ========== */
+
+/* Header sticky */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* TODO: Thêm box-shadow để tạo hiệu ứng nổi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Thêm hiệu ứng khi header được sticky (tùy chọn) */
+.sticky-header:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút Scroll to Top */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    /* TODO:
+       - width: 50px, height: 50px
+       - background: #007bff
+       - color: white
+       - border-radius: 50%
+       - display: flex, justify/align center
+       - text-decoration: none
+       - font-size: 24px
+    */
+    width: 50px;
+    height: 50px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    opacity: 0.8;
+}
+
+.scroll-top:hover {
+    /* TODO: background: #0056b3, transform: scale(1.1) */
+    background: #0056b3;
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    nav {
+        /* TODO: flex-direction: column */
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    /* Điều chỉnh kích thước nút scroll cho mobile */
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    /* Điều chỉnh header cho mobile */
+    .sticky-header {
+        padding: 15px !important; /* Giảm padding cho mobile */
+    }
+    
+    /* Điều chỉnh các nav-link cho mobile */
+    .nav-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px !important;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    nav a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Thêm style cho phần nội dung để thấy hiệu ứng scroll rõ hơn */
+main {
+    min-height: 1500px; /* Tạo nội dung dài để scroll */
+    padding: 20px;
+}
+
+/* Style cho phần footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
