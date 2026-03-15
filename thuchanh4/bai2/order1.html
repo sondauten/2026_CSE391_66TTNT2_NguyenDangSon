@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Đặt Hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-light min-vh-100 d-flex align-items-center justify-content-center py-4">
+
+<div class="card shadow" style="max-width:540px;width:100%">
+  <div class="card-header bg-primary text-white text-center py-4">
+    <h2 class="h4 fw-bold mb-1">🛒 Form Đặt Hàng</h2>
+    <p class="mb-0 small opacity-75">Điền thông tin để đặt hàng trực tuyến</p>
+  </div>
+
+  <div class="card-body p-4">
+
+    <!-- SUCCESS BOX -->
+    <div id="successBox" class="text-center py-4" style="display:none">
+      <div class="display-4 mb-3">✅</div>
+      <h3 class="h4 fw-bold text-success">Đặt hàng thành công!</h3>
+      <p class="text-secondary">Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ sớm nhất.</p>
+      <button class="btn btn-primary mt-2" onclick="resetAll()">Đặt hàng mới</button>
+    </div>
+
+    <!-- CONFIRM BOX -->
+    <div id="confirmBox" style="display:none">
+      <h5 class="fw-bold mb-3">📋 Xác nhận đơn hàng</h5>
+      <table class="table table-bordered table-sm mb-4">
+        <tbody>
+          <tr><th class="bg-light" style="width:45%">Sản phẩm</th><td id="cf-product"></td></tr>
+          <tr><th class="bg-light">Số lượng</th><td id="cf-qty"></td></tr>
+          <tr><th class="bg-light">Tổng tiền</th><td id="cf-total" class="fw-bold text-primary"></td></tr>
+          <tr><th class="bg-light">Ngày giao</th><td id="cf-date"></td></tr>
+          <tr><th class="bg-light">Địa chỉ</th><td id="cf-address"></td></tr>
+          <tr><th class="bg-light">Thanh toán</th><td id="cf-payment"></td></tr>
+        </tbody>
+      </table>
+      <p class="fw-semibold">Xác nhận đặt hàng?</p>
+      <div class="d-flex gap-2">
+        <button class="btn btn-success w-50" onclick="confirmOrder()">✔ Xác nhận</button>
+        <button class="btn btn-outline-secondary w-50" onclick="cancelConfirm()">✖ Hủy</button>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form id="orderForm" novalidate>
+
+      <!-- Tên sản phẩm -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Tên sản phẩm</label>
+        <select id="product" class="form-select">
+          <option value="Áo thun">Áo thun</option>
+          <option value="Quần jeans">Quần jeans</option>
+          <option value="Giày sneaker">Giày sneaker</option>
+          <option value="Túi xách">Túi xách</option>
+          <option value="Mũ lưỡi trai">Mũ lưỡi trai</option>
+        </select>
+        <span class="text-danger small" id="product-error"></span>
+      </div>
+
+      <!-- Số lượng -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Số lượng</label>
+        <input type="number" id="qty" class="form-control" value="0"/>
+        <span class="text-danger small" id="qty-error"></span>
+      </div>
+
+      <!-- Tổng tiền -->
+      <div class="mb-3">
+        <div class="alert alert-info py-2 mb-0 d-flex justify-content-between align-items-center">
+          <span class="fw-semibold">💰 Tổng tiền:</span>
+          <span id="totalPrice" class="fw-bold fs-5">0 ₫</span>
+        </div>
+      </div>
+
+      <!-- Ngày giao hàng -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Ngày giao hàng</label>
+        <input type="date" id="deliveryDate" class="form-control"/>
+        <span class="text-danger small" id="deliveryDate-error"></span>
+      </div>
+
+      <!-- Địa chỉ giao -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Địa chỉ giao hàng</label>
+        <input type="text" id="address" class="form-control"/>
+        <span class="text-danger small" id="address-error"></span>
+      </div>
+
+      <!-- Ghi chú -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Ghi chú <span class="text-muted fw-normal">(không bắt buộc)</span></label>
+        <textarea id="note" class="form-control" rows="3" maxlength="200"></textarea>
+        <div class="d-flex justify-content-between mt-1">
+          <span class="text-danger small" id="note-error"></span>
+          <span class="small text-muted" id="noteCount">0/200</span>
+        </div>
+      </div>
+
+      <hr/>
+
+      <!-- Phương thức thanh toán -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold d-block">Phương thức thanh toán</label>
+        <div class="d-flex gap-4">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment" id="payCOD" value="COD" checked/>
+            <label class="form-check-label" for="payCOD">COD</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment" id="payTransfer" value="Chuyển khoản"/>
+            <label class="form-check-label" for="payTransfer">Chuyển khoản</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment" id="payWallet" value="Ví điện tử"/>
+            <label class="form-check-label" for="payWallet">Ví điện tử</label>
+          </div>
+        </div>
+        <span class="text-danger small" id="payment-error"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Đặt hàng</button>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  
+  
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="orderValidation.js"></script>
+</body>
+</html>
